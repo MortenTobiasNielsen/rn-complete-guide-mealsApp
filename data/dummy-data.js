@@ -156,7 +156,7 @@ export const MEALS = [
     [
       "Wash and cut salad and herbs",
       "Dice the salmon",
-      "Process mustard, vinegar and olive oil into a dessing",
+      "Process mustard, vinegar and olive oil into a dressing",
       "Prepare the salad",
       "Add salmon cubes and dressing",
     ],
