@@ -13,7 +13,7 @@ import StandardFonts from "../constants/fonts";
 const CategoryGridTile = (props) => {
   let TouchableCmp = TouchableOpacity;
 
-  if (Platform.OS === "android" && Platform.Version >= 26) {
+  if (Platform.OS === "android" && Platform.Version >= 21) {
     TouchableCmp = TouchableNativeFeedback;
   }
 
