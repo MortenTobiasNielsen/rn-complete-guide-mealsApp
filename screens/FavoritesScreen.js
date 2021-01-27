@@ -6,7 +6,7 @@ import HeaderButton from "../components/HeaderButton";
 import MealList from "../components/MealList";
 
 const FavoritesScreen = (props) => {
-  const availableMeals = useSelector((state) => state.meals.FavoritesMeals);
+  const availableMeals = useSelector((state) => state.meals.favoriteMeals);
 
   return <MealList listData={availableMeals} navigation={props.navigation} />;
 };
