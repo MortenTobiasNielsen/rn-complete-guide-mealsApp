@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Text, Platform } from "react-native";
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createDrawerNavigator } from "react-navigation-drawer";
@@ -18,6 +18,12 @@ import StandardFonts from "../constants/fonts";
 const defaultStackNavOptions = {
   headerStyle: {
     backgroundColor: Platform.OS === "android" ? Colors.primaryColor : "",
+  },
+  headerTitle: {
+    fontFamily: StandardFonts.openSansBold,
+  },
+  headerBackTitleStyle: {
+    fontFamily: StandardFonts.openSans,
   },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.primaryColor,
 };
@@ -45,6 +51,15 @@ const FavNavigator = createStackNavigator(
   }
 );
 
+const FiltersNavigator = createStackNavigator(
+  {
+    Filters: FiltersScreen,
+  },
+  {
+    defaultNavigationOptions: defaultStackNavOptions,
+  }
+);
+
 const TabScreenConfig = {
   Meals: {
     screen: MealsNavigator,
@@ -56,6 +71,12 @@ const TabScreenConfig = {
         );
       },
       tabBarColor: Colors.primaryColor,
+      tabBarLabel:
+        Platform.OS === "android" ? (
+          <Text style={{ fontFamily: StandardFonts.openSansBold }}>Meals</Text>
+        ) : (
+          "Meals"
+        ),
     },
   },
   Favorites: {
@@ -65,6 +86,14 @@ const TabScreenConfig = {
         return <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />;
       },
       tabBarColor: Colors.accentColor,
+      tabBarLabel:
+        Platform.OS === "android" ? (
+          <Text style={{ fontFamily: StandardFonts.openSansBold }}>
+            Favorites
+          </Text>
+        ) : (
+          "Favorites"
+        ),
     },
   },
 };
@@ -76,17 +105,13 @@ const MealsFavTabNavigator =
         shifting: true,
       })
     : createBottomTabNavigator(TabScreenConfig, {
-        tabBarOptions: { activeTintColor: Colors.accentColor },
+        tabBarOptions: {
+          labelStyle: {
+            fontFamily: StandardFonts.openSansBold,
+          },
+          activeTintColor: Colors.accentColor,
+        },
       });
-
-const FiltersNavigator = createStackNavigator(
-  {
-    Filters: FiltersScreen,
-  },
-  {
-    defaultNavigationOptions: defaultStackNavOptions,
-  }
-);
 
 const MainNavigator = createDrawerNavigator(
   {
